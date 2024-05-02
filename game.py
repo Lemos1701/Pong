@@ -12,8 +12,9 @@ def startGameIA():
     iE = 0
     jan = Window(600, 600)
     ball = Sprite("./Sprites./game/p503.png")
-    BarraE = Sprite("./Sprites./game/barra.png")
-    BarraD = Sprite("./Sprites./game/barra.png")
+    BarraE = Sprite("./Sprites./game/barraE.png")
+    BarraD = Sprite("./Sprites./game/barraD.png")
+    fundo = GameImage("./Sprites./main/fundo.png") 
     teclado = Window.get_keyboard()
 
     #DEFININDO VELOCIDADES
@@ -124,6 +125,7 @@ def startGameIA():
         #TEXTO
         jan.draw_text("{} - {}".format(iD, iE),100, 50 , 45, (0,0,0), "Arial", False, False)
 
+        fundo.draw()
         ball.draw()
         BarraE.draw()
         BarraD.draw()
@@ -137,9 +139,13 @@ def startGameSolo():
     iE = 0
     jan = Window(600, 600)
     ball = Sprite("./Sprites./game/p503.png")
-    BarraE = Sprite("./Sprites./game/barra.png")
-    BarraD = Sprite("./Sprites./game/barra.png")
+    BarraE = Sprite("./Sprites./game/barraE.png")
+    BarraD = Sprite("./Sprites./game/barraD.png")
+    fundo = GameImage("./Sprites./main/fundo.png") 
     teclado = Window.get_keyboard()
+
+    #SONS
+    bolaBate = pygame.mixer.Sound("./sons./menu/colide.mp3")
 
     #DEFININDO VELOCIDADES
     velx = 220
@@ -167,22 +173,26 @@ def startGameSolo():
 
         #VELOCIDADE DA BOLA
         timePass = time.time() - timer
-        if timePass>=0.1:
+        if timePass >= 0.1:
             ball.x = ball.x + velx*jan.delta_time()
             ball.y = ball.y + vely*jan.delta_time()
 
         #BOLA BATENDO NAS PAREDES
         if ball.y >= jan.height - ball.height:
             ball.y = jan.height - ball.height
+            bolaBate.play()
             vely *= -1
         elif ball.y <= 0:
             ball.y = 0
+            bolaBate.play()
             vely *= -1
         if ball.x >= jan.height - ball.height:
             ball.x = jan.height - ball.height
+            bolaBate.play()
             velx *= -1
         elif ball.x <= 0:
             ball.x = 0
+            bolaBate.play()
             velx *= -1
 
         #MOVIEMNTAÇÃO DAS BARRAS PLAYER 1
@@ -200,10 +210,13 @@ def startGameSolo():
         #COLISÃO COM AS BARRAS
         if(BarraE.collided(ball)) and velx < 0:
             if velx > 0:
+                bolaBate.play()
                 velx += 10
+                velx *= -1
             else:
+                bolaBate.play()
                 velx -= 10
-            velx *= -1
+                velx *= -1
 
         if(BarraD.collided(ball)) and velx > 0:
             if velx > 0:
@@ -248,6 +261,7 @@ def startGameSolo():
         #TEXTO
         jan.draw_text("{} - {}".format(iD, iE),100, 50 , 45, (0,0,0), "Arial", False, False)
 
+        fundo.draw()
         ball.draw()
         BarraE.draw()
         BarraD.draw()
