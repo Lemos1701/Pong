@@ -2,124 +2,41 @@
 from PPlay.window import *
 from PPlay.sprite import *
 from PPlay.gameimage import *
+import game
 
-#CRIANDO VARIÁVEIS NECESSÁRIAS
-iD = 0
-iE = 0
-jan = Window(600, 600)
-ball = Sprite("./Sprites./p503.png")
-BarraE = Sprite("./Sprites./barra.png")
-BarraD = Sprite("./Sprites./barra.png")
-teclado = Window.get_keyboard()
+#CHAMANDO A JANELA
+menuJan = Window(600,600)
+menuJan.set_title("Pong")
+mouse = menuJan.get_mouse()
 
-#DEFININDO VELOCIDADES
-velx = 220
-vely = 205
-velBOT = 155
-velBarraE = 250
+#SPRITES
+playIA = Sprite("./Sprites./main/botao_1.png")
+playSolo = Sprite("./Sprites./main/botao_1.png")
+sair = Sprite("./Sprites./main/botao_1.png")
+fundo = GameImage("./Sprites./main/fundo.png") 
 
+#DEFINIR POSIÇÃO DOS BOTÕES
+playSolo.x = menuJan.width/2 - playSolo.width/2
+playSolo.y = menuJan.height/2 + playSolo.height/2
 
-#DEFININDO POSIÇÕES
-BXe = BarraE.width
-BYe = jan.height/2 - BarraE.height/2
+playIA.x = menuJan.width/2 - playIA.width/2
+playIA.y = menuJan.height/2 + (2 * playIA.height)
 
-BXd = jan.width - (2*BarraD.width)
-BYd = jan.height/2 - BarraE.height/2
+sair.x = menuJan.width/2 - sair.width/2
+sair.y = menuJan.height/2 + (3.5 * sair.height)
 
-px = jan.width/2 - ball.width/2
-py = jan.height/2 - ball.height/2
-
-jan.set_title("Pong by LeMoS")
-ball.set_position(px, py)
-BarraE.set_position(BXe,BYe)
-BarraD.set_position(BXd,BYd)
-
-
-while True:
-    #VELOCIDADE DA BOLA
-    ball.x = ball.x + velx*jan.delta_time()
-    ball.y = ball.y + vely*jan.delta_time()
-
-    #CRIAR A IA
-    if velx > 0 and ball.x > jan.width/2 and ball.x < jan.width:
-        if BarraD.y >= 0 and ball.y < BarraD.y + BarraD.height/2:
-                BarraD.y -= velBOT*jan.delta_time()
-        if BarraD.y <= jan.height - BarraD.height and ball.y > BarraD.y + BarraD.height/2:
-                BarraD.y += velBOT*jan.delta_time()
-
-    #BOLA BATENDO NAS PAREDES
-    if ball.y >= jan.height - ball.height:
-        ball.y = jan.height - ball.height
-        vely *= -1
-    elif ball.y <= 0:
-        ball.y = 0
-        vely *= -1
-    if ball.x >= jan.height - ball.height:
-        ball.x = jan.height - ball.height
-        velx *= -1
-    elif ball.x <= 0:
-        ball.x = 0
-        velx *= -1
-
-    #MOVIEMNTAÇÃO DAS BARRAS
-    if(teclado.key_pressed("w")):
-        BarraE.y = BarraE.y - velBarraE*jan.delta_time()
-    if(teclado.key_pressed("s")):
-        BarraE.y = BarraE.y + velBarraE*jan.delta_time()
-
-    #COLISÃO COM AS BARRAS
-    if(BarraE.collided(ball)) and velx < 0:
-        if velx > 0:
-            velx += 10
-        else:
-            velx -= 10
-        velx *= -1
-
-    if(BarraD.collided(ball)) and velx > 0:
-        if velx > 0:
-            velx += 10
-        else:
-            velx -= 10
-        velx *= -1
-
-    #PATINAÇÃO DA BOLA
-    if ball.x == BXe:
-        ball.x = BXe
-    if ball.x == BXd:
-        ball.x = BXe
-
-    #PONTUAÇÃO
-    if ball.x >= jan.width - ball.width:
-        iD += 1
-        ball.set_position(px, py)
-        BarraE.set_position(BXe,BYe)
-        BarraD.set_position(BXd,BYd)
-        velx = 220
-    elif ball.x <= 0:
-        iE += 1
-        ball.set_position(px, py)
-        BarraE.set_position(BXe,BYe)
-        BarraD.set_position(BXd,BYd)
-        velx = 220
+while(True):
+    if mouse.is_over_area([playSolo.x, playSolo.y], [playSolo.x + playSolo.width, playSolo.y + playSolo.height]) and mouse.is_button_pressed(1):
+        game.startGameIA()
     
-    #COLISÃO COM A BORDA
-    if BarraE.y >= jan.height - BarraE.height:
-        BarraE.set_position(BXe,jan.height - BarraE.height)
-    elif BarraE.y <= 0:
-        BarraE.set_position(BXe, 0)
-    
-    if BarraD.y >= jan.height - BarraE.height:
-        BarraD.set_position(BXd,jan.height - BarraE.height)
-    elif BarraD.y <= 0:
-        BarraD.set_position(BXd, 0)
-    
-    jan.set_background_color((255,0,0)) 
+    if mouse.is_over_area([playIA.x, playIA.y], [playIA.x + playIA.width, playIA.y + playIA.height]) and mouse.is_button_pressed(1):
+        game.startGameIA()
 
-    #TEXTO
-    jan.draw_text("{} - {}".format(iD, iE),100, 50 , 45, (0,0,0), "Arial", False, False)
+    if mouse.is_over_area([sair.x, sair.y], [sair.x + sair.width, sair.y + sair.height]) and mouse.is_button_pressed(1):
+        menuJan.close()
 
-    ball.draw()
-    BarraE.draw()
-    BarraD.draw()
-    jan.update()
-    print(velx)
+    fundo.draw()
+    playIA.draw()
+    playSolo.draw()
+    sair.draw()
+    menuJan.update()
