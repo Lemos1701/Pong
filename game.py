@@ -1,8 +1,12 @@
 from PPlay.window import *
 from PPlay.sprite import *
 from PPlay.gameimage import *
+import pygame
+import time
 
 def startGameIA():
+    clock = pygame.time.Clock()
+    timer = time.time()
     #CRIANDO VARIÁVEIS NECESSÁRIAS
     iD = 0
     iE = 0
@@ -34,11 +38,13 @@ def startGameIA():
     BarraE.set_position(BXe,BYe)
     BarraD.set_position(BXd,BYd)
 
+    while True: 
 
-    while True:
         #VELOCIDADE DA BOLA
-        ball.x = ball.x + velx*jan.delta_time()
-        ball.y = ball.y + vely*jan.delta_time()
+        timePass = time.time() - timer
+        if timePass>=0.1:
+            ball.x = ball.x + velx*jan.delta_time()
+            ball.y = ball.y + vely*jan.delta_time()
 
         #CRIAR A IA
         if velx > 0 and ball.x > jan.width/2 and ball.x < jan.width:
@@ -124,6 +130,8 @@ def startGameIA():
         jan.update()
 
 def startGameSolo():
+    clock = pygame.time.Clock()
+    timer = time.time()
     #CRIANDO VARIÁVEIS NECESSÁRIAS
     iD = 0
     iE = 0
@@ -156,9 +164,12 @@ def startGameSolo():
 
 
     while True:
+
         #VELOCIDADE DA BOLA
-        ball.x = ball.x + velx*jan.delta_time()
-        ball.y = ball.y + vely*jan.delta_time()
+        timePass = time.time() - timer
+        if timePass>=0.1:
+            ball.x = ball.x + velx*jan.delta_time()
+            ball.y = ball.y + vely*jan.delta_time()
 
         #BOLA BATENDO NAS PAREDES
         if ball.y >= jan.height - ball.height:

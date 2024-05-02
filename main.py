@@ -3,6 +3,8 @@ from PPlay.window import *
 from PPlay.sprite import *
 from PPlay.gameimage import *
 import game
+import pygame
+import time
 
 #CHAMANDO A JANELA
 menuJan = Window(600,600)
