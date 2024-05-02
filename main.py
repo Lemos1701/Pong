@@ -27,7 +27,7 @@ sair.y = menuJan.height/2 + (3.5 * sair.height)
 
 while(True):
     if mouse.is_over_area([playSolo.x, playSolo.y], [playSolo.x + playSolo.width, playSolo.y + playSolo.height]) and mouse.is_button_pressed(1):
-        game.startGameIA()
+        game.startGameSolo()
     
     if mouse.is_over_area([playIA.x, playIA.y], [playIA.x + playIA.width, playIA.y + playIA.height]) and mouse.is_button_pressed(1):
         game.startGameIA()
