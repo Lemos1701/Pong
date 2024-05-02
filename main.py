@@ -21,7 +21,8 @@ mouse = menuJan.get_mouse()
 playIA = Sprite("./Sprites./main/botao_1.png")
 playSolo = Sprite("./Sprites./main/botao_1.png")
 sair = Sprite("./Sprites./main/botao_1.png")
-fundo = GameImage("./Sprites./main/fundo.png") 
+fundo = GameImage("./Sprites./main/fundo.png")
+titulo = Sprite("./Sprites./main/titulo.png")
 
 #SONS
 click = pygame.mixer.Sound("./sons./main/click.mp3")
@@ -31,6 +32,9 @@ fundoM.set_volume(0.15)
 fundoM.play(-1)
 
 #DEFINIR POSIÇÃO DOS BOTÕES
+titulo.x = menuJan.width/2 - titulo.width/2
+titulo.y = menuJan.height/2 - (1.5 * titulo.height)
+
 playSolo.x = menuJan.width/2 - playSolo.width/2
 playSolo.y = menuJan.height/2 + playSolo.height/2
 
@@ -61,4 +65,5 @@ while(True):
     playIA.draw()
     playSolo.draw()
     sair.draw()
+    titulo.draw()
     menuJan.update()

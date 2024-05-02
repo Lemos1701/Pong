@@ -22,7 +22,9 @@ def startGameIA():
     vely = 205
     velBOT = 155
     velBarraE = 250
-
+    
+    #SONS
+    bolaBate = pygame.mixer.Sound("./sons./menu/colide.mp3")
 
     #DEFININDO POSIÇÕES
     BXe = BarraE.width
@@ -56,15 +58,19 @@ def startGameIA():
 
         #BOLA BATENDO NAS PAREDES
         if ball.y >= jan.height - ball.height:
+            bolaBate.play()
             ball.y = jan.height - ball.height
             vely *= -1
         elif ball.y <= 0:
+            bolaBate.play()
             ball.y = 0
             vely *= -1
         if ball.x >= jan.height - ball.height:
+            bolaBate.play()
             ball.x = jan.height - ball.height
             velx *= -1
         elif ball.x <= 0:
+            bolaBate.play()
             ball.x = 0
             velx *= -1
 
@@ -77,17 +83,23 @@ def startGameIA():
         #COLISÃO COM AS BARRAS
         if(BarraE.collided(ball)) and velx < 0:
             if velx > 0:
+                bolaBate.play()
                 velx += 10
+                velx *= -1
             else:
+                bolaBate.play()
                 velx -= 10
-            velx *= -1
+                velx *= -1
 
         if(BarraD.collided(ball)) and velx > 0:
             if velx > 0:
+                bolaBate.play()
                 velx += 10
+                velx *= -1
             else:
+                bolaBate.play()
                 velx -= 10
-            velx *= -1
+                velx *= -1
 
         #PATINAÇÃO DA BOLA
         if ball.x == BXe:
@@ -220,10 +232,13 @@ def startGameSolo():
 
         if(BarraD.collided(ball)) and velx > 0:
             if velx > 0:
+                bolaBate.play()
+                velx *= -1
                 velx += 10
             else:
+                bolaBate.play()
                 velx -= 10
-            velx *= -1
+                velx *= -1
 
         #PATINAÇÃO DA BOLA
         if ball.x == BXe:
