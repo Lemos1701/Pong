@@ -7,9 +7,9 @@ def startGameIA():
     iD = 0
     iE = 0
     jan = Window(600, 600)
-    ball = Sprite("./game./Sprites./p503.png")
-    BarraE = Sprite("./game./Sprites./barra.png")
-    BarraD = Sprite("./game./Sprites./barra.png")
+    ball = Sprite("./Sprites./game/p503.png")
+    BarraE = Sprite("./Sprites./game/barra.png")
+    BarraD = Sprite("./Sprites./game/barra.png")
     teclado = Window.get_keyboard()
 
     #DEFININDO VELOCIDADES
