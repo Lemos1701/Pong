@@ -18,7 +18,7 @@ menuJan.set_title("Pong")
 mouse = menuJan.get_mouse()
 
 #SPRITES
-playIA = Sprite("./Sprites./main/botao_1.png")
+playIA = Sprite("./Sprites./main/vsBot.png")
 playSolo = Sprite("./Sprites./main/botao_1.png")
 sair = Sprite("./Sprites./main/botao_1.png")
 fundo = GameImage("./Sprites./main/fundo.png")
