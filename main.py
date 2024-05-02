@@ -1,3 +1,4 @@
+
 from PPlay.window import *
 from PPlay.sprite import *
 from PPlay.gameimage import *
@@ -5,7 +6,7 @@ from PPlay.gameimage import *
 #CRIANDO VARIÁVEIS NECESSÁRIAS
 iD = 0
 iE = 0
-jan = Window(800, 800)
+jan = Window(600, 600)
 ball = Sprite("./Sprites./p503.png")
 BarraE = Sprite("./Sprites./barra.png")
 BarraD = Sprite("./Sprites./barra.png")
@@ -68,9 +69,17 @@ while True:
 
     #COLISÃO COM AS BARRAS
     if(BarraE.collided(ball)) and velx < 0:
+        if velx > 0:
+            velx += 10
+        else:
+            velx -= 10
         velx *= -1
 
     if(BarraD.collided(ball)) and velx > 0:
+        if velx > 0:
+            velx += 10
+        else:
+            velx -= 10
         velx *= -1
 
     #PATINAÇÃO DA BOLA
@@ -83,9 +92,15 @@ while True:
     if ball.x >= jan.width - ball.width:
         iD += 1
         ball.set_position(px, py)
+        BarraE.set_position(BXe,BYe)
+        BarraD.set_position(BXd,BYd)
+        velx = 220
     elif ball.x <= 0:
         iE += 1
         ball.set_position(px, py)
+        BarraE.set_position(BXe,BYe)
+        BarraD.set_position(BXd,BYd)
+        velx = 220
     
     #COLISÃO COM A BORDA
     if BarraE.y >= jan.height - BarraE.height:
@@ -107,3 +122,4 @@ while True:
     BarraE.draw()
     BarraD.draw()
     jan.update()
+    print(velx)
