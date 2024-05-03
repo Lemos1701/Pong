@@ -28,7 +28,7 @@ titulo = Sprite("./Sprites./main/titulo.png")
 click = pygame.mixer.Sound("./sons./main/click.mp3")
 click.set_volume(0.5)
 fundoM = pygame.mixer.Sound("./sons./main/fundo.mp3")
-fundoM.set_volume(0.05)
+fundoM.set_volume(0.050)
 fundoM.play(-1)
 
 #DEFINIR POSIÇÃO DOS BOTÕES

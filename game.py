@@ -11,6 +11,10 @@ def startGameIA():
     iD = 0
     iE = 0
     jan = Window(600, 600)
+    num0 = Sprite("./Sprites./game/num0.png")
+    num1 = Sprite("./Sprites./game/num1.png")
+    num2 = Sprite("./Sprites./game/num2.png")
+    num3 = Sprite("./Sprites./game/num3.png")
     ball = Sprite("./Sprites./game/p503.png")
     BarraE = Sprite("./Sprites./game/barraE.png")
     BarraD = Sprite("./Sprites./game/barraD.png")
@@ -31,6 +35,10 @@ def startGameIA():
     BXe = BarraE.width
     BYe = jan.height/2 - BarraE.height/2
 
+    numXd = jan.width/8 - num0.width/2
+    numY = jan.height/8 - num0.height/2
+    numXe = (7 * jan.width/8) - num0.width/2
+
     BXd = jan.width - (2*BarraD.width)
     BYd = jan.height/2 - BarraE.height/2
 
@@ -46,7 +54,7 @@ def startGameIA():
 
         #VELOCIDADE DA BOLA
         timePass = time.time() - timer
-        if timePass>=0.1:
+        if timePass>=0.15:
             ball.x = ball.x + velx*jan.delta_time()
             ball.y = ball.y + vely*jan.delta_time()
 
@@ -138,7 +146,41 @@ def startGameIA():
         #TEXTO
 
         fundo.draw()
-        jan.draw_text("{} - {}".format(iD, iE),100, 50 , 45, (0,0,0), "Arial", False, False)
+
+        #PLACAR SPRITE
+        #direita
+        if iD == 0:
+            num0.set_position(numXd, numY)
+            num0.draw()
+        
+        if iD == 1:
+            num1.set_position(numXd, numY)
+            num1.draw()
+
+        if iD == 2:
+            num2.set_position(numXd, numY)
+            num2.draw()
+        
+        if iD == 3:
+            num3.set_position(numXd, numY)
+            num3.draw()
+        #esquerda
+        if iE == 0:
+            num0.set_position(numXe, numY)
+            num0.draw()
+        
+        if iE == 1:
+            num1.set_position(numXe, numY)
+            num1.draw()
+
+        if iE == 2:
+            num2.set_position(numXe, numY)
+            num2.draw()
+        
+        if iE == 3:
+            num3.set_position(numXe, numY)
+            num3.draw()
+
         ball.draw()
         BarraE.draw()
         BarraD.draw()
@@ -151,6 +193,10 @@ def startGameSolo():
     iD = 0
     iE = 0
     jan = Window(600, 600)
+    num0 = Sprite("./Sprites./game/num0.png")
+    num1 = Sprite("./Sprites./game/num1.png")
+    num2 = Sprite("./Sprites./game/num2.png")
+    num3 = Sprite("./Sprites./game/num3.png")
     ball = Sprite("./Sprites./game/p503.png")
     BarraE = Sprite("./Sprites./game/barraE.png")
     BarraD = Sprite("./Sprites./game/barraD.png")
@@ -170,6 +216,10 @@ def startGameSolo():
     #DEFININDO POSIÇÕES
     BXe = BarraE.width
     BYe = jan.height/2 - BarraE.height/2
+
+    numXd = jan.width/8 - num0.width/2
+    numY = jan.height/8 - num0.height/2
+    numXe = (7 * jan.width/8) - num0.width/2
 
     BXd = jan.width - (2*BarraD.width)
     BYd = jan.height/2 - BarraE.height/2
@@ -275,10 +325,48 @@ def startGameSolo():
         
         jan.set_background_color((255,0,0)) 
 
-        #TEXTO
 
         fundo.draw()
-        jan.draw_text("{} - {}".format(iD, iE),100, 50 , 45, (0,0,0), "Arial", False, False)
+
+        #PLACAR SPRITE
+        #direita
+        if iD == 0:
+            num0.set_position(numXd, numY)
+            num0.draw()
+        
+        if iD == 1:
+            num1.set_position(numXd, numY)
+            num1.draw()
+
+        if iD == 2:
+            num2.set_position(numXd, numY)
+            num2.draw()
+        
+        if iD == 3:
+            num3.set_position(numXd, numY)
+            num3.draw()
+        
+        if iD == 3:
+            num3.set_position(numXd, numY)
+            num3.draw()
+        #esquerda
+        if iE == 0:
+            num0.set_position(numXe, numY)
+            num0.draw()
+        
+        if iE == 1:
+            num1.set_position(numXe, numY)
+            num1.draw()
+
+        if iE == 2:
+            num2.set_position(numXe, numY)
+            num2.draw()
+        
+        if iE == 3:
+            num3.set_position(numXe, numY)
+            num3.draw()
+        
+        
         ball.draw()
         BarraE.draw()
         BarraD.draw()
