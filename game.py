@@ -25,6 +25,7 @@ def startGameIA():
     
     #SONS
     bolaBate = pygame.mixer.Sound("./sons./menu/colide.mp3")
+    bolaBate.set_volume(0.15)
 
     #DEFININDO POSIÇÕES
     BXe = BarraE.width
@@ -158,6 +159,7 @@ def startGameSolo():
 
     #SONS
     bolaBate = pygame.mixer.Sound("./sons./menu/colide.mp3")
+    bolaBate.set_volume(0.15)
 
     #DEFININDO VELOCIDADES
     velx = 220

@@ -19,8 +19,8 @@ mouse = menuJan.get_mouse()
 
 #SPRITES
 playIA = Sprite("./Sprites./main/vsBot.png")
-playSolo = Sprite("./Sprites./main/botao_1.png")
-sair = Sprite("./Sprites./main/botao_1.png")
+playSolo = Sprite("./Sprites./main/vsPlayer.png")
+sair = Sprite("./Sprites./main/sair.png")
 fundo = GameImage("./Sprites./main/fundo.png")
 titulo = Sprite("./Sprites./main/titulo.png")
 
@@ -28,7 +28,7 @@ titulo = Sprite("./Sprites./main/titulo.png")
 click = pygame.mixer.Sound("./sons./main/click.mp3")
 click.set_volume(0.5)
 fundoM = pygame.mixer.Sound("./sons./main/fundo.mp3")
-fundoM.set_volume(0.15)
+fundoM.set_volume(0.05)
 fundoM.play(-1)
 
 #DEFINIR POSIÇÃO DOS BOTÕES
