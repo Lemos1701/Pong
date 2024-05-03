@@ -64,7 +64,7 @@ def startGameIA():
 
         #VELOCIDADE DA BOLA
         timePass = time.time() - timer
-        if timePass>=0.15:
+        if timePass>=0.45:
             ball.x = ball.x + velx*jan.delta_time()
             ball.y = ball.y + vely*jan.delta_time()
 
@@ -273,7 +273,7 @@ def startGameSolo():
 
         #VELOCIDADE DA BOLA
         timePass = time.time() - timer
-        if timePass >= 0.15:
+        if timePass >= 0.45:
             ball.x = ball.x + velx*jan.delta_time()
             ball.y = ball.y + vely*jan.delta_time()
 
