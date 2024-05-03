@@ -237,7 +237,7 @@ def startGameSolo():
 
         #VELOCIDADE DA BOLA
         timePass = time.time() - timer
-        if timePass >= 0.1:
+        if timePass >= 0.15:
             ball.x = ball.x + velx*jan.delta_time()
             ball.y = ball.y + vely*jan.delta_time()
 
