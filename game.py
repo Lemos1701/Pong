@@ -136,9 +136,9 @@ def startGameIA():
         jan.set_background_color((255,0,0)) 
 
         #TEXTO
-        jan.draw_text("{} - {}".format(iD, iE),100, 50 , 45, (0,0,0), "Arial", False, False)
 
         fundo.draw()
+        jan.draw_text("{} - {}".format(iD, iE),100, 50 , 45, (0,0,0), "Arial", False, False)
         ball.draw()
         BarraE.draw()
         BarraD.draw()
@@ -276,9 +276,9 @@ def startGameSolo():
         jan.set_background_color((255,0,0)) 
 
         #TEXTO
-        jan.draw_text("{} - {}".format(iD, iE),100, 50 , 45, (0,0,0), "Arial", False, False)
 
         fundo.draw()
+        jan.draw_text("{} - {}".format(iD, iE),100, 50 , 45, (0,0,0), "Arial", False, False)
         ball.draw()
         BarraE.draw()
         BarraD.draw()
