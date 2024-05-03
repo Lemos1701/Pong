@@ -3,6 +3,8 @@ from PPlay.sprite import *
 from PPlay.gameimage import *
 import pygame
 import time
+import menu1
+
 
 def startGameIA():
     clock = pygame.time.Clock()
@@ -20,6 +22,8 @@ def startGameIA():
     BarraD = Sprite("./Sprites./game/barraD.png")
     fundo = GameImage("./Sprites./main/fundo.png") 
     teclado = Window.get_keyboard()
+    mouse1 = jan.get_mouse()
+    menu = Sprite("./Sprites./game/menu.png")
 
     #DEFININDO VELOCIDADES
     velx = 220
@@ -30,10 +34,16 @@ def startGameIA():
     #SONS
     bolaBate = pygame.mixer.Sound("./sons./menu/colide.mp3")
     bolaBate.set_volume(0.15)
+    fundoM = pygame.mixer.Sound("./sons./main/fundo.mp3")
+    fundoM.set_volume(0.1)
+    fundoM.play(-1)
 
     #DEFININDO POSIÇÕES
     BXe = BarraE.width
     BYe = jan.height/2 - BarraE.height/2
+
+    menu.x = jan.width/2 - menu.width/2
+    menu.y = jan.height/2 + (2 * menu.height)
 
     numXd = jan.width/8 - num0.width/2
     numY = jan.height/8 - num0.height/2
@@ -123,6 +133,7 @@ def startGameIA():
             BarraE.set_position(BXe,BYe)
             BarraD.set_position(BXd,BYd)
             velx = 220
+
         elif ball.x <= 0:
             iE += 1
             ball.set_position(px, py)
@@ -164,6 +175,15 @@ def startGameIA():
         if iD == 3:
             num3.set_position(numXd, numY)
             num3.draw()
+            menu.draw()
+            if mouse1.is_over_area([menu.x, menu.y], [menu.x + menu.width, menu.y + menu.height]) and mouse1.is_button_pressed(1):
+                fundoM.stop()
+                menu1.inicial()
+            velBOT = 0
+            velBarraE = 0
+            velx = 0
+            vely = 0
+
         #esquerda
         if iE == 0:
             num0.set_position(numXe, numY)
@@ -180,6 +200,14 @@ def startGameIA():
         if iE == 3:
             num3.set_position(numXe, numY)
             num3.draw()
+            menu.draw()
+            if mouse1.is_over_area([menu.x, menu.y], [menu.x + menu.width, menu.y + menu.height]) and mouse1.is_button_pressed(1):
+                fundoM.stop()
+                menu1.inicial()
+            velBOT = 0
+            velBarraE = 0
+            velx = 0
+            vely = 0
 
         ball.draw()
         BarraE.draw()
@@ -202,10 +230,15 @@ def startGameSolo():
     BarraD = Sprite("./Sprites./game/barraD.png")
     fundo = GameImage("./Sprites./main/fundo.png") 
     teclado = Window.get_keyboard()
+    mouse1 = jan.get_mouse()
+    menu = Sprite("./Sprites./game/menu.png")
 
     #SONS
     bolaBate = pygame.mixer.Sound("./sons./menu/colide.mp3")
     bolaBate.set_volume(0.15)
+    fundoM = pygame.mixer.Sound("./sons./main/fundo.mp3")
+    fundoM.set_volume(0.1)
+    fundoM.play(-1)
 
     #DEFININDO VELOCIDADES
     velx = 220
@@ -216,6 +249,9 @@ def startGameSolo():
     #DEFININDO POSIÇÕES
     BXe = BarraE.width
     BYe = jan.height/2 - BarraE.height/2
+
+    menu.x = jan.width/2 - menu.width/2
+    menu.y = jan.height/2 + (2 * menu.height)
 
     numXd = jan.width/8 - num0.width/2
     numY = jan.height/8 - num0.height/2
@@ -349,6 +385,13 @@ def startGameSolo():
         if iD == 3:
             num3.set_position(numXd, numY)
             num3.draw()
+            menu.draw()
+            if mouse1.is_over_area([menu.x, menu.y], [menu.x + menu.width, menu.y + menu.height]) and mouse1.is_button_pressed(1):
+                fundoM.stop()
+                menu1.inicial()
+            velBarra = 0
+            velx = 0
+            vely = 0
         #esquerda
         if iE == 0:
             num0.set_position(numXe, numY)
@@ -365,6 +408,13 @@ def startGameSolo():
         if iE == 3:
             num3.set_position(numXe, numY)
             num3.draw()
+            menu.draw()
+            if mouse1.is_over_area([menu.x, menu.y], [menu.x + menu.width, menu.y + menu.height]) and mouse1.is_button_pressed(1):
+                fundoM.stop()
+                menu1.inicial()
+            velBarra = 0
+            velx = 0
+            vely = 0
         
         
         ball.draw()
