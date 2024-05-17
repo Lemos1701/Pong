@@ -5,7 +5,6 @@ import pygame
 import time
 import menu1
 
-
 def startGameIA():
     clock = pygame.time.Clock()
     timer = time.time()
@@ -186,7 +185,7 @@ def startGameIA():
 
         #esquerda
         if iE == 0:
-            num0.set_position(numXe, numY)
+            num0.set_position(numXe,numY)
             num0.draw()
         
         if iE == 1:
